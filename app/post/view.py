@@ -16,7 +16,7 @@ def new_post():
         pitch = Pitch(title=form.title.data, content = form.content.data, user = current_user, category = form.category.data)
         db.session.add(pitch)
         db.session.commit()
-        flash('Your post has been created', 'success')
+        
         return redirect(url_for('main.home'))
     return render_template('user_posts.html',title = 'New Post', form = form, legend = 'New Post')
 
