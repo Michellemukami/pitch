@@ -4,6 +4,7 @@ from flask_login import UserMixin
 from datetime import datetime
 from . import login_manager
 
+ 
 class PhotoProfile(db.Model):
 
    __tablename__ = 'profile_photos'
@@ -17,12 +18,12 @@ class PhotoProfile(db.Model):
 
 class Pitch(db.Model):
     __tablename__ = 'pitch'
-    id = db.Column(db.Integer, primary_key = True)
-    title = db.Column(db.String(100), nullable = False)
-   
-    content = db.Column(db.Text(1600), nullable = False)
+
+    id = db.Column(db.Integer, primary_key = True )
+    title = db.Column(db.String(100))
+    content = db.Column(db.Text(1600))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
-    category = db.Column(db.String(255), nullable= False)
+    category = db.Column(db.String(255))
     def __repr__(self):
         return f"Pitch('{self.title}')"
 
@@ -31,18 +32,26 @@ class Pitch(db.Model):
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
-    
+    pitch = db.relationship('Pitch', backref = 'users', lazy="dynamic")
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),index = True)
     password = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
-    pitch = db.relationship('Pitch', backref = 'author', lazy=True)
     profile_pic_path = db.Column(db.String())
     password_secure = db.Column(db.String(255))
     
-    
-    
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
+    @classmethod
+    def clear_pitch(cls):
+        Pitch.all_pitchs.clear()
 
+    
+    @classmethod
+    def get_pitchs(cls,id):
+        pitchs = Pitch.query.filter_by(users_id=id).all()
+        return pitchs
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')

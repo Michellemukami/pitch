@@ -8,10 +8,10 @@
     <h3> {{user.username| capitalize}} </h3>
 
     <!--Displaying user post-->
-    {% if user.post %}
-      <p> {{user.post}}</p>
+    {% if user.bio %}
+      <p> {{user.bio}}</p>
     {%else%}
-      <p> {{user.username| capitalize}} has no post </p>
+      <p> {{user.username| capitalize}} has no bio </p>
     {% endif %}
   </div>
 
@@ -40,7 +40,7 @@
     <div class="row">
       <div class= "col-md-4"> 
           {% if user == current_user %}
-          <a href="{{url_for('main.update_profile',uname=user.username)}}">Create your post today</a>
+          <a href="{{url_for('main.update_profile',uname=user.username)}}">Create your bio today</a>
       {% endif %}
       </div>
       <div class="col-md-3">
