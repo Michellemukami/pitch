@@ -53,7 +53,7 @@ def biograpghy():
 
    pitches = Pitch.get_pitches('biography')
 
-   return render_template("biography.html", pitches=pitches)
+   return render_template("biograghy.html", pitches=pitches)
 main.route('/user/<uname>/pitches')
 def user_pitches(uname):
    user = User.query.filter_by(username=uname).first()
