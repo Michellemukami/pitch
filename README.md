@@ -52,7 +52,6 @@ To run the tests for the class file:
 | Behaviour    | Input     | Output|
 | :------------- | :------------- |:---------|
 |   Post pitch     |     Pitch is saved in a database | Post from database|
-
 |Login and authenticate|Email address and password|Saved and used for authentication|
 
 
