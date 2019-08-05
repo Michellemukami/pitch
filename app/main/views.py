@@ -24,15 +24,51 @@ def new_post():
         return redirect(url_for('main.home'))
     return render_template('post.html',title = 'New Post', form = form, legend = 'New Post')
 
-
-
 @main.route("/")
 @main.route("/home")
 def home():
-    page = request.args.get('page', 1, type=int)
-    pitch = Pitch.get_all_pitches()
-    # categories = Category.get_categories()
-    return render_template('home.html', Pitch = Pitch)
+
+   '''
+   View root page function that returns the index page and its data
+   '''
+   title = 'Welcome to Pitch app'
+
+   # Getting reviews by category
+   page = request.args.get('page', 1, type=int)
+   inspiration = Pitch.get_pitches('inspiration')
+   biograghy = Pitch.get_pitches('biograghy')
+   business = Pitch.get_pitches('business')
+
+   return render_template('home.html', title=title, inspiration=inspiration, biograghy=biograghy, business=business)
+
+@main.route('/pitches/inspiration')
+def inspiration():
+   pitches = Pitch.get_pitches('inspiration')
+
+   return render_template('inspirational.html', pitches=pitches)
+
+
+@main.route('/pitches/biography')
+def biograpghy():
+
+   pitches = Pitch.get_pitches('biography')
+
+   return render_template("biography.html", pitches=pitches)
+main.route('/user/<uname>/pitches')
+def user_pitches(uname):
+   user = User.query.filter_by(username=uname).first()
+   pitches = Pitch.query.filter_by(user_id=user.id).all()
+   pitches_count = Pitch.count_pitches(uname)
+   user_joined = user.date_joined.strftime('%b %d, %Y')
+
+   return render_template("profile/pitches.html", user=user, pitches=pitches, pitches_count=pitches_count, date=user_joined)
+
+@main.route('/pitches/idea')
+def idea():
+
+   pitches = Pitch.get_pitches('idea')
+
+   return render_template("ideas.html", pitches=pitches)
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
@@ -78,20 +114,20 @@ def profile(uname):
 
     return render_template("profile/profile.html", user = user)
 
-@main.route('/interview/pitchs')
-def interview_pitch():
-    pitchs = Pitch.get_all_pitches()
-    title = 'Interview Pitches'
-    return render_template('interview.html',title = title,pitchs = pitchs)
+# @main.route('/interview/pitchs')
+# def interview_pitch():
+#     pitchs = Pitch.get_all_pitches()
+#     title = 'Interview Pitches'
+#     return render_template('interview.html',title = title,pitchs = pitchs)
 
-@main.route('/promotion/pitchs')
-def promotion_pitch():
-    pitchs = Pitch.get_all_pitches()
-    title = 'Promotion Pitches'
-    return render_template('promotion.html',title = title,pitchs = pitchs)
+# @main.route('/promotion/pitchs')
+# def promotion_pitch():
+#     pitchs = Pitch.get_all_pitches()
+#     title = 'Promotion Pitches'
+#     return render_template('promotion.html',title = title,pitchs = pitchs)
 
-@main.route('/product/pitchs')
-def product_pitch():
-    pitchs = Pitch.get_all_pitches()
-    title = 'Product Pitches'
-    return render_template('product.html',title = title,pitchs = pitchs)
+# @main.route('/product/pitchs')
+# def inspiration():
+#     pitchs = Pitch.get_all_pitches()
+#     title = 'inspiration'
+#     return render_template('inspiration.html',title = title,pitchs = pitchs)

@@ -28,11 +28,11 @@ class Pitch(db.Model):
         return f"Pitch('{self.title}')"
 
     @classmethod
-    def get_all_pitches(cls):
-        '''
-        Function that queries database and returns all posted pitches.
-        '''
-        return Pitch.query.all()
+ 
+    def get_pitches(cls, category):
+       pitch = Pitch.query.filter_by(category=category).all()
+
+       return pitch
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()

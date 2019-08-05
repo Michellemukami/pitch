@@ -1,0 +1,25 @@
+body{
+    
+    font-family:  'Gentium', cursive;
+  }
+  .jumbotron{
+    text-align: center;
+    
+    font-family:  'Cookie', cursive;
+
+  }
+  .navbar{
+    background-color:#b5838d;
+  }
+  
+  p{
+    font-size: 25px;
+    font-family: 'Kaushan', serif;
+
+  }
+  a{
+    font-size: 30px;
+    margin-left: 20px;
+    text-decoration: none;
+  }
+  

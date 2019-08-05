@@ -3,18 +3,42 @@
 {% block content %}
 
 <div class="jumbotron">
-  <h1>HOME PAGE!</h1>
+  <h1>IMPRESS US!</h1>
 </div>
+<h1>Pitches</h1>
+<hr>
+
+
+
 <div class="container">
-  <p class="latest"><b>Posted Pitches :</b></p>
-  <div class="thumbnail pitches">
-      
-    <p class="pitches">{{macro.displayPitches(pitches)}}</p>
-  </div>
+   <div class="row">
+       <div class="col-md-4">
+           <div class="well well-lg">
+               <h3>Ideas Pitches</h3>
+               
+               <a href="{{url_for('main.idea')}}" class="btn btn-primary -center">View</a>
+           </div>
+       </div>
+       <div class="col-md-4">
+        <div class="well well-lg">
+            <h3>Ideas Pitches</h3>
+            
+            <a href="{{url_for('main.idea')}}" class="btn btn-primary -center">View</a>
+        </div>
+    </div>
+  
+       <div class="col-md-4">
+           <div class="well well-lg">
+               <h3>Inspiration Pitches</h3>
+              
+               <a href="{{url_for('main.inspiration')}}" class="btn btn-primary -center">View</a>
+           </div>
+       </div>
+   </div>
 </div>
   <img src="https://i.pinimg.com/originals/be/e4/f5/bee4f5c81cbabbc274bf202e68a9e5e1.gif" alt="tororo" height="200px" width="200px"id="tororo">
   </div>
   </div>
   <div class="col-md-4"> </div>
   </div>
-{% endblock %}
+  {%endblock%}

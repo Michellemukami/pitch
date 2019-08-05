@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+{%block content%}
+<div class="jumbotron text-center" >
+   <h1>Inspiration Pitches</h1>
+</div>
+
+       {{macro.displayPitches(pitches)}}
+   </div>
+</div>
+{%endblock%}
