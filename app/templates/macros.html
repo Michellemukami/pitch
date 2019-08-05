@@ -1,23 +1,16 @@
-{% macro displayMovieList(movie_list) %}
 
-    <!-- {% for movie in movie_list %}
-        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
-            <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
-            <li class="text-center">
-                <a href="/movie/{{movie.id}}">
-                    {{ movie.title|truncate(10)}}</a>
-            </li>
-        </div>
-
-    {% endfor %} -->
-
-{% endmacro %}
 <!-- Displaying reviews macro -->
-{% macro displayPosts(post_list) %}
-    {% for post in post_list %}
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
-        <h2> {{ post.title}} </h2>
-        <p> {{ post.post | truncate(30) }}</p>
-    </div>
+{% macro displayPitches(pitches_list) %}
+
+    {% for pitch in pitches_list %}
+    <br>
+      <div class="thumbnail">
+          <p>{{pitch.pitch}}</p>
+          <p>{{pitch.category}}</p>
+          <br>
+          <a href="{{url_for('main.new_comment',id=pitch.id)}}">Comment on Pitch:</a>&nbsp;&nbsp;|
+          <a href="{{url_for('main.view_comments',id=pitch.id)}}">Other Comments</a>&nbsp;&nbsp;|
+      </div>
     {% endfor %}
+
 {% endmacro %}

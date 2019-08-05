@@ -1,21 +1,17 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 {% block content %}
+
 <div class="jumbotron">
   <h1>HOME PAGE!</h1>
 </div>
 <div class="container">
   <p class="latest"><b>Posted Pitches :</b></p>
   <div class="thumbnail pitches">
-      {{categories.categories|upper}} PITCHES
+      
     <p class="pitches">{{macro.displayPitches(pitches)}}</p>
   </div>
 </div>
-</div>
-    <div class="container"> 
-      <div class="row">
-        <div class= "col-md-5"> </div>
-        <div class="col-md-3">
   <img src="https://i.pinimg.com/originals/be/e4/f5/bee4f5c81cbabbc274bf202e68a9e5e1.gif" alt="tororo" height="200px" width="200px"id="tororo">
   </div>
   </div>

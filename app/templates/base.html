@@ -8,5 +8,18 @@
   <!--Importing the simple mde css and js files  -->
   {{ simplemde.css}}
   {{ simplemde.js }}
-
-{% endblock %}
+  
+  <meta http-equiv="Cache-control" content="no-cache">
+ 
+    {{super()}}
+  
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gentium+Basic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{url_for('static', filename='css/tt.css')}}">
+  
+  
+  
+    
+  {% endblock %}
+  

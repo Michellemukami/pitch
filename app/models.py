@@ -27,6 +27,18 @@ class Pitch(db.Model):
     def __repr__(self):
         return f"Pitch('{self.title}')"
 
+    @classmethod
+    def get_all_pitches(cls):
+        '''
+        Function that queries database and returns all posted pitches.
+        '''
+        return Pitch.query.all()
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
+    @classmethod
+    def clear_pitch(cls):
+        Pitch.all_pitchs.clear()
 
 
 
@@ -40,23 +52,13 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String())
     password_secure = db.Column(db.String(255))
     
-    def save_pitch(self):
-        db.session.add(self)
-        db.session.commit()
-    @classmethod
-    def clear_pitch(cls):
-        Pitch.all_pitchs.clear()
-
-    
-    @classmethod
-    def get_pitchs(cls,id):
-        pitchs = Pitch.query.filter_by(users_id=id).all()
-        return pitchs
+   
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
 
     
+   
 
     @password.setter
     def password(self, password):

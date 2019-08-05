@@ -22,7 +22,7 @@ def new_post():
         db.session.commit()
         flash('Your post has been created', 'success')
         return redirect(url_for('main.home'))
-    return render_template('create_post.html',title = 'New Post', form = form, legend = 'New Post')
+    return render_template('post.html',title = 'New Post', form = form, legend = 'New Post')
 
 
 
@@ -30,7 +30,8 @@ def new_post():
 @main.route("/home")
 def home():
     page = request.args.get('page', 1, type=int)
-    
+    pitch = Pitch.get_all_pitches()
+    # categories = Category.get_categories()
     return render_template('home.html', Pitch = Pitch)
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
@@ -76,3 +77,21 @@ def profile(uname):
         abort(404)
 
     return render_template("profile/profile.html", user = user)
+
+@main.route('/interview/pitchs')
+def interview_pitch():
+    pitchs = Pitch.get_all_pitches()
+    title = 'Interview Pitches'
+    return render_template('interview.html',title = title,pitchs = pitchs)
+
+@main.route('/promotion/pitchs')
+def promotion_pitch():
+    pitchs = Pitch.get_all_pitches()
+    title = 'Promotion Pitches'
+    return render_template('promotion.html',title = title,pitchs = pitchs)
+
+@main.route('/product/pitchs')
+def product_pitch():
+    pitchs = Pitch.get_all_pitches()
+    title = 'Product Pitches'
+    return render_template('product.html',title = title,pitchs = pitchs)

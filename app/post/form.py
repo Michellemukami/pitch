@@ -6,4 +6,4 @@ class PostForm(FlaskForm):
     title = StringField('Title', validators = [DataRequired(), Length(min = 2, max = 45)])
     content = TextAreaField('Pitch', validators = [DataRequired()])
     category = SelectField('Pitch Category', choices=[('Inspirational','Inspirational'),('Biography','Biography'),('Business','Business'),('Ideas','Ideas')])
-    submit = SubmitField('Post')
+    submit = SubmitField('Pitch')
