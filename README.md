@@ -40,7 +40,7 @@ Clone the application using git clone(this copies the app onto your device). In 
 
 
 ## Testing the Application
-To run the tests for the class files:
+To run the tests for the class file:
 
   ```  $ python3.6 manage.py test```
 
