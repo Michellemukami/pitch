@@ -1,0 +1,13 @@
+body{
+    background: url(https://i.pinimg.com/564x/43/6f/31/436f31cbb5f8c77f9559acb6798839e8.jpg);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:white;
+}
+
+img{
+        background: transparent;
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}

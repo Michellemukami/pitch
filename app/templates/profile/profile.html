@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+<div class="row">
+<!-- displaying  Username-->
+  <div class="col-md-4">
+    <h3> {{user.username| capitalize}} </h3>
+
+    <!--Displaying user post-->
+    {% if user.post %}
+      <p> {{user.post}}</p>
+    {%else%}
+      <p> {{user.username| capitalize}} has no post </p>
+    {% endif %}
+  </div>
+
+  <!--Display profile photo-->
+  <div class="row">
+  <div class="col-md-4">
+    {% if user.profile_pic_path %}Kaguya-sama wa Kokurasetai: Tensai-tachi no Renai
+
+    <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail"  border-radius="50%">
+
+    {%else%}
+    <p>No profile picture</p>
+
+    {% endif %}
+  </div>
+        {% if user == current_user %}
+    <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
+
+      <input type="file"  name="photo" class="form-control" required>
+      <input type="submit">
+    </form>
+      {% endif %}
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class= "col-md-4"> 
+          {% if user == current_user %}
+          <a href="{{url_for('main.update_profile',uname=user.username)}}">Create your post today</a>
+      {% endif %}
+      </div>
+      <div class="col-md-3">
+<img src="https://i.pinimg.com/originals/be/e4/f5/bee4f5c81cbabbc274bf202e68a9e5e1.gif" alt="tororo" height="200px" width="200px"id="tororo">
+</div>
+</div>
+<div class="col-md-4"> </div>
+</div>
+
+</div>
+{% endblock %}
