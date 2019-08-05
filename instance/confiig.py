@@ -1,4 +1,4 @@
-MOVIE_API_KEY = '52aa730a904ebb3fec8e777c735c94a1'
+
 SECRET_KEY = 'kamikaze'
 email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
