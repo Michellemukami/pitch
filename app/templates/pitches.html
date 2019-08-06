@@ -1,22 +1,26 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
-
+<!-- Styles block -->
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
 {% block content %}
 <div class="container">
     <div class="jumbotron">
         <p>PITCHES</p>
     </div>
     {% if posts %}
-   
+    {% for post in posts %}
     <div class="panel panel-primary">
-        <div class="panel-heading">{{posts.category}}</div>
+        <div class="panel-heading">{{post.category}}</div>
         <div class="panel-body">
-            {{posts.content}}
+            {{post.content}}
             <br>
             <br>
             </div>
     </div>
-   
+    {% endfor %}
     {% else %}
     No post in this category yet !!
     {% endif %}

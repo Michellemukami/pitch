@@ -13,7 +13,10 @@ class PhotoProfile(db.Model):
    pic_path = db.Column(db.String())
    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
-
+class Category(db.Model):
+    __tablename__="categories"
+    id=db.Column(db.Integer,primary_key=True)
+    name=db.Column(db.String(255))
 
 
 class Pitch(db.Model):
@@ -21,9 +24,10 @@ class Pitch(db.Model):
 
     id = db.Column(db.Integer, primary_key = True )
     title = db.Column(db.String(100))
-    content = db.Column(db.Text(1600))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
+    content = db.Column(db.String(200))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     category = db.Column(db.String(255))
+    
     def __repr__(self):
         return f"Pitch('{self.title}')"
 

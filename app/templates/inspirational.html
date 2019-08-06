@@ -5,8 +5,12 @@
 <div class="jumbotron text-center" >
    <h1>Inspiration Pitches</h1>
 </div>
+{%if pitches %}
 
        {{macro.displayPitches(pitches)}}
-   </div>
+{%else%}
+<h4>No pitches posted</h4>
+{%endif%}
+      </div>
 </div>
 {%endblock%}

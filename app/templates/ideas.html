@@ -4,10 +4,12 @@
 {%block content%}
 <div class="jumbotron text-center">
    <h1>Idea Pitches</h1>
-</div>
+   {%if pitches %}
+   {% for pitch in pitches%}
 
-   <div class="row">
-       {{macro.displayPitches(pitches)}}
-   </div>
-</div>
+   {{macro.displayPitches(pitches)}}
+{%else%}
+<h4>No pitches posted</h4>
+{%endfor%}
+{%endif%}
 {%endblock%}

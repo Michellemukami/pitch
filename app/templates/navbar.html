@@ -28,7 +28,7 @@
                     <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
                     <li><a href="{{ url_for('main.new_post')}}">New post</a></li>
                     <li style="color:white;padding:15px;">{{current_user.username}}</li>
-                    <li><img src="{{url_for('static',filename=current_user.profile_pic_path)}}" alt="" class="img-thumbnail"  border-radius="50%" width="70px" height="70px"></li>
+                   
                     <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
                     {% else %}
                     <li><a href="{{url_for('auth.login')}}">Sign in</a></li>

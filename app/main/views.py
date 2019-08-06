@@ -8,7 +8,10 @@ from flask_login import login_required, current_user
 from .forms import UpdateProfile
 from .. import db,photos
 import markdown2 
-# post = post.post
+@main.route("/pitches")
+def posts(category):
+    posts=list(Pitch.query.filter_by(category=category))
+    return render_template("pitches.html",posts=posts)
 
 
 @main.route("/post/new", methods= ['GET', 'POST'])
@@ -41,7 +44,7 @@ def home():
 
    return render_template('home.html', title=title, inspiration=inspiration, biograghy=biograghy, business=business)
 
-@main.route('/pitches/inspiration')
+@main.route('/pitches/inspiration', methods= ['GET', 'POST'])
 def inspiration():
    pitches = Pitch.get_pitches('inspiration')
 
@@ -50,20 +53,18 @@ def inspiration():
 
 @main.route('/pitches/biography')
 def biograpghy():
+    posts=Pitch.query.all()
 
-   pitches = Pitch.get_pitches('biography')
-
-   return render_template("biograghy.html", pitches=pitches)
+    return render_template("biograghy.html", posts=posts)
 main.route('/user/<uname>/pitches')
 def user_pitches(uname):
    user = User.query.filter_by(username=uname).first()
    pitches = Pitch.query.filter_by(user_id=user.id).all()
-   pitches_count = Pitch.count_pitches(uname)
-   user_joined = user.date_joined.strftime('%b %d, %Y')
+ 
 
    return render_template("profile/pitches.html", user=user, pitches=pitches, pitches_count=pitches_count, date=user_joined)
 
-@main.route('/pitches/idea')
+@main.route('/pitches/idea', methods= ['GET', 'POST'])
 def idea():
 
    pitches = Pitch.get_pitches('idea')
@@ -114,20 +115,3 @@ def profile(uname):
 
     return render_template("profile/profile.html", user = user)
 
-# @main.route('/interview/pitchs')
-# def interview_pitch():
-#     pitchs = Pitch.get_all_pitches()
-#     title = 'Interview Pitches'
-#     return render_template('interview.html',title = title,pitchs = pitchs)
-
-# @main.route('/promotion/pitchs')
-# def promotion_pitch():
-#     pitchs = Pitch.get_all_pitches()
-#     title = 'Promotion Pitches'
-#     return render_template('promotion.html',title = title,pitchs = pitchs)
-
-# @main.route('/product/pitchs')
-# def inspiration():
-#     pitchs = Pitch.get_all_pitches()
-#     title = 'inspiration'
-#     return render_template('inspiration.html',title = title,pitchs = pitchs)

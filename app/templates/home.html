@@ -4,8 +4,9 @@
 
 <div class="jumbotron">
   <h1>IMPRESS US!</h1>
+  <h1>Pitches</h1>
 </div>
-<h1>Pitches</h1>
+
 <hr>
 <p>In life, you only have 60 seconds to impress someone. 1 minute can make or break you. Here is your chance to shine so sign up and post your pitch and let others see</p>
 
@@ -24,7 +25,7 @@
         <div class="well well-lg">
             <h3>Ideas Pitches</h3>
             
-            <a href="{{url_for('main.idea')}}" class="btn btn-primary -center">View</a>
+            <a href="{{url_for('main.posts')}}" class="btn btn-primary -center">View</a>
         </div>
     </div>
   
@@ -32,14 +33,10 @@
            <div class="well well-lg">
                <h3>Inspiration Pitches</h3>
               
-               <a href="{{url_for('main.inspiration')}}" class="btn btn-primary -center">View</a>
+               <a href="{{url_for('main.posts')}}" class="btn btn-primary -center">View</a>
            </div>
        </div>
    </div>
 </div>
-  <img src="https://i.pinimg.com/originals/be/e4/f5/bee4f5c81cbabbc274bf202e68a9e5e1.gif" alt="tororo" height="200px" width="200px"id="tororo">
-  </div>
-  </div>
-  <div class="col-md-4"> </div>
-  </div>
-  {%endblock%}
+ 
+  {% endblock %}
