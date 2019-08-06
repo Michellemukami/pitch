@@ -44,16 +44,16 @@ def home():
 
    return render_template('home.html', title=title, inspiration=inspiration, biograghy=biograghy, business=business)
 
-@main.route('/pitches/inspiration', methods= ['GET', 'POST'])
+@main.route('/pitches/inspiration')
 def inspiration():
-   pitches = Pitch.get_pitches('inspiration')
+    posts=Pitch.query.filter_by(category='Inspirational')
 
-   return render_template('inspirational.html', pitches=pitches)
+    return render_template('inspirational.html', posts=posts)
 
 
 @main.route('/pitches/biography')
 def biograpghy():
-    posts=Pitch.query.all()
+    posts=Pitch.query.filter_by(category='Biography')
 
     return render_template("biograghy.html", posts=posts)
 main.route('/user/<uname>/pitches')
@@ -64,12 +64,12 @@ def user_pitches(uname):
 
    return render_template("profile/pitches.html", user=user, pitches=pitches, pitches_count=pitches_count, date=user_joined)
 
-@main.route('/pitches/idea', methods= ['GET', 'POST'])
+@main.route('/pitches/idea')
 def idea():
 
-   pitches = Pitch.get_pitches('idea')
+   posts=Pitch.query.filter_by(category='Ideas')
 
-   return render_template("ideas.html", pitches=pitches)
+   return render_template("ideas.html", posts=posts)
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required

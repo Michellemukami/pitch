@@ -1,15 +1,30 @@
-{% extends 'base.html' %}
-{% import 'macros.html' as macro %}
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{%block content%}
-<div class="jumbotron text-center">
-   <h1>Idea Pitches</h1>
-   {%if pitches %}
-   {% for pitch in pitches%}
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <p>Idea</p>
+    </div>
+    {% if posts %}
+   {%for posts in posts%}
+    <div class="panel panel-primary">
+            {{current_user.username}}
+        <div class="panel-heading">{{posts.category}}</div>
+        <div class="panel-body">
+            {{posts.content}}
+            <br>
+            <br>
+            </div>
+    </div>
+   
+    {% else %}
+    No post in this category yet !!
+    {%endfor%}
+    {% endif %}
+</div>
+{% endblock %}
 
-   {{macro.displayPitches(pitches)}}
-{%else%}
-<h4>No pitches posted</h4>
-{%endfor%}
-{%endif%}
-{%endblock%}
+
+
+
