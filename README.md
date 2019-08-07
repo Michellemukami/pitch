@@ -16,9 +16,9 @@ This is an application that enables a user to post pitches and view other users'
 ## Cloning and running
 Clone the application using git clone(this copies the app onto your device). In your terminal:
 
-  ```  $ git clone https://github.com/saudahabib/pitch-perfect/```
+  ```  $ git clone https://github.com/michellemukami/pitch/```
   
-  ```  $ cd pitch-perfect```
+  ```  $ cd pitch```
 
 ## Creating the virtual environment
 
